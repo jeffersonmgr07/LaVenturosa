@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Casa de Campo El Encanto | Alquiler y Eventos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Alquila una hermosa casa de campo con piscina, pequeña granja y 5 habitaciones familiares. Full day, eventos y alojamiento." />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-main: #022c22;          /* verde oscuro */
+      --bg-alt: #064e3b;           /* verde medio */
+      --bg-soft: #e8f5e9;          /* verde muy claro */
+      --primary: #fbbf24;          /* dorado */
+      --primary-dark: #d97706;
+      --primary-soft: #fef3c7;
+      --accent: #10b981;           /* verde acento */
+      --text-main: #0f172a;
+      --text-light: #f9fafb;
+      --muted: #6b7280;
+      --border: #d1fae5;
+      --radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.25);
+      --transition-fast: 180ms ease-out;
+      --content-width: 1040px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(circle at top, #065f46 0, #022c22 55%, #020617 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+      color: var(--text-main);
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: linear-gradient(to bottom, rgba(2, 44, 34, 0.98), rgba(2, 44, 34, 0.92));
+      padding: 10px 16px;
+      border-radius: 999px;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.32);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .header-logo img {
+      height: 54px;
+      max-width: 100%;
+      object-fit: contain;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #facc15, #f59e0b);
+      padding: 3px;
+    }
+
+    .header-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      color: var(--text-light);
+    }
+
+    .header-title h1 {
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .header-title span {
+      font-size: 0.78rem;
+      color: #d1fae5;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      flex: 1;
+    }
+
+    .nav-link {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.82rem;
+      color: #d1fae5;
+      background: transparent;
+      cursor: pointer;
+      transition: background var(--transition-fast), border var(--transition-fast),
+        color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-link:hover {
+      background: rgba(6, 95, 70, 0.9);
+      border-color: rgba(251, 191, 36, 0.8);
+      color: #fefce8;
+      transform: translateY(-1px);
+    }
+
+    .nav-link.primary {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #1f2933;
+      border-color: transparent;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(251, 191, 36, 0.55);
+    }
+
+    .nav-link.primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    /* Bubble WhatsApp */
+
+    .whatsapp-bubble {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 0, #bbf7d0, #22c55e);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+      animation: whatsapp-pulse 1.4s infinite;
+      cursor: pointer;
+      text-decoration: none;
+      border: 1px solid rgba(74, 222, 128, 0.8);
+      padding: 6px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .whatsapp-bubble-icon {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    @keyframes whatsapp-pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.6);
+      }
+      100% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 8px rgba(22, 163, 74, 0);
+      }
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 26px;
+      margin-top: 32px;
+      margin-bottom: 40px;
+      align-items: center;
+      color: #ecfdf5;
+    }
+
+    .hero-left {
+      padding-right: 6px;
+    }
+
+    .hero-kicker {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #a7f3d0;
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 2.5vw + 1rem, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .hero-title span.highlight {
+      background: linear-gradient(120deg, #fbbf24, #facc15, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: #d1fae5;
+      margin-bottom: 10px;
+      max-width: 620px;
+    }
+
+    .hero-extra {
+      font-size: 0.94rem;
+      color: #a7f3d0;
+      margin-bottom: 14px;
+      max-width: 620px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.7);
+      border: 1px solid rgba(187, 247, 208, 0.6);
+      font-size: 0.78rem;
+      color: #ecfdf5;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #ffffff;
+      color: var(--text-main);
+      transition: background var(--transition-fast), border var(--transition-fast),
+        transform var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #022c22;
+      border-color: transparent;
+      font-weight: 500;
+      box-shadow: 0 12px 32px rgba(251, 191, 36, 0.5);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(250, 204, 21, 0.7);
+    }
+
+    .btn-outline {
+      border-color: rgba(252, 211, 77, 0.9);
+      background: transparent;
+      color: #fefce8;
+    }
+
+    .btn-outline:hover {
+      background: rgba(22, 163, 74, 0.3);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #a7f3d0;
+      margin-bottom: 10px;
+    }
+
+    /* HERO DERECHA: CARD DE RESERVA */
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .booking-card {
+      width: 100%;
+      max-width: 420px;
+      background: #ecfdf5;
+      border-radius: 22px;
+      border: 1px solid #bbf7d0;
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .booking-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #022c22;
+    }
+
+    .booking-subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .booking-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .booking-block label {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .booking-select,
+    .booking-input {
+      width: 100%;
+      border-radius: 0.8rem;
+      border: 1px solid rgba(55, 65, 81, 0.35);
+      padding: 0.4rem 0.6rem;
+      background: #ffffff;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+    }
+
+    .booking-select:focus,
+    .booking-input:focus {
+      border-color: #16a34a;
+      box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.35);
+      background: #f0fdf4;
+    }
+
+    .booking-form-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .booking-note {
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .booking-cta {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-whatsapp {
+      width: 100%;
+      justify-content: center;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ecfdf5;
+      border: none;
+      box-shadow: 0 10px 26px rgba(22, 163, 74, 0.6);
+    }
+
+    .btn-whatsapp:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    /* CALENDARIO VISUAL */
+
+    .calendar {
+      border-radius: 1rem;
+      background: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 0.6rem 0.7rem 0.7rem;
+      font-size: 0.78rem;
+    }
+
+    .calendar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+    }
+
+    .calendar-month-label {
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: #022c22;
+    }
+
+    .calendar-nav-btn {
+      border: none;
+      background: #f9fafb;
+      border-radius: 999px;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .calendar-nav-btn:hover {
+      border-color: #16a34a;
+      color: #065f46;
+    }
+
+    .calendar-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 0.2rem;
+      text-align: center;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .calendar-weekdays span {
+      padding: 0.12rem 0;
+    }
+
+    .calendar-days {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.15rem;
+    }
+
+    .calendar-day {
+      border-radius: 0.6rem;
+      padding: 0.35rem 0;
+      text-align: center;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: #111827;
+      background: #f9fafb;
+    }
+
+    .calendar-day:hover {
+      border-color: rgba(16, 185, 129, 0.7);
+    }
+
+    .calendar-day.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .calendar-day.selected {
+      background: linear-gradient(135deg, #fbbf24, #f97316);
+      border-color: transparent;
+      color: #022c22;
+      box-shadow: 0 0 0 1px rgba(250, 250, 249, 0.9);
+      font-weight: 600;
+    }
+
+    .calendar-day.is-today {
+      border-color: rgba(56, 189, 248, 0.8);
+    }
+
+    /* SECCIONES GENERALES */
+
+    section {
+      margin-top: 42px;
+      color: #ecfdf5;
+    }
+
+    .section-header {
+      margin-bottom: 16px;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6ee7b7;
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #bae6fd;
+      max-width: 680px;
+    }
+
+    .section-subtitle.dark {
+      color: var(--muted);
+    }
+
+    /* TARJETAS / GRID */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #ecfdf5;
+      border-radius: var(--radius-lg);
+      border: 1px solid #bbf7d0;
+      padding: 16px 16px 14px;
+      box-shadow: var(--shadow-soft);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+        border var(--transition-fast);
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #facc15;
+      box-shadow: 0 20px 40px rgba(22, 163, 74, 0.4);
+    }
+
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+      color: #022c22;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #fef3c7;
+      color: #92400e;
+      margin-bottom: 6px;
+    }
+
+    /* GALERÍA */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #022c22;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+      min-height: 140px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+      transition: transform 200ms ease-out;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.07);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.75);
+      color: #f9fafb;
+      font-size: 0.75rem;
+    }
+
+    /* PLANES / TARIFAS */
+
+    .plan-price {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 4px 0;
+      color: #b45309;
+    }
+
+    .plan-price span {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .plan-list {
+      list-style: none;
+      margin-top: 6px;
+      padding-left: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .plan-list li {
+      margin-bottom: 4px;
+    }
+
+    .plan-list li::before {
+      content: "✓";
+      margin-right: 0.4rem;
+      color: #16a34a;
+      font-size: 0.8rem;
+    }
+
+    /* UBICACIÓN */
+
+    .location-card {
+      background: #ecfdf5;
+      border-radius: var(--radius-lg);
+      border: 1px solid #bbf7d0;
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .map-placeholder {
+      margin-top: 10px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #bfdbfe;
+      background: linear-gradient(135deg, #bbf7d0, #22c55e);
+      color: #022c22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      font-size: 0.86rem;
+      text-align: center;
+    }
+
+    /* CONTACTO */
+
+    .contact-card {
+      background: #ecfdf5;
+      border-radius: var(--radius-lg);
+      border: 1px solid #bbf7d0;
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .whatsapp-number {
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.86rem;
+      color: #166534;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* FOOTER */
+
+    footer {
+      margin-top: 40px;
+      border-top: 1px solid rgba(148, 163, 184, 0.4);
+      padding-top: 14px;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* FLOTANTE WHATSAPP (MÓVIL/GENERAL) */
+
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 18px;
+      right: 16px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ecfdf5;
+      font-size: 0.9rem;
+      box-shadow: 0 16px 32px rgba(22, 163, 74, 0.7);
+      border: none;
+      cursor: pointer;
+    }
+
+    .floating-whatsapp span {
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .floating-whatsapp-icon {
+      font-size: 1.1rem;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 880px) {
+      .page {
+        padding-inline: 14px;
+      }
+
+      header {
+        border-radius: 0;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero-right {
+        order: -1;
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: center;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .grid,
+      .grid-2,
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      nav {
+        gap: 6px;
+      }
+
+      .nav-link {
+        font-size: 0.8rem;
+        padding-inline: 10px;
+      }
+
+      .whatsapp-bubble {
+        display: none;
+      }
+
+      .floating-whatsapp {
+        bottom: 14px;
+        right: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <div class="header-logo">
+          <!-- Reemplaza la ruta del src por la de tu logo -->
+          <img src="img/logo-casa-de-campo.png" alt="Logo Casa de Campo" />
+          <div class="header-title">
+            <h1>Casa de Campo El Encanto</h1>
+            <span>Full day · Eventos · Alojamiento familiar</span>
+          </div>
+        </div>
+
+        <nav>
+          <a href="#inicio" class="nav-link">Inicio</a>
+          <a href="#casa" class="nav-link">La casa</a>
+          <a href="#servicios" class="nav-link">Ambientes</a>
+          <a href="#galeria" class="nav-link">Galería</a>
+          <a href="#tarifas" class="nav-link">Tarifas</a>
+          <a href="#ubicacion" class="nav-link">Ubicación</a>
+          <a href="#contacto" class="nav-link primary">Reservar ahora</a>
+          <a
+            href="https://wa.me/51999999999"
+            class="whatsapp-bubble"
+            target="_blank"
+            aria-label="Escríbenos por WhatsApp"
+          >
+            <img src="img/whatsapp.png" alt="WhatsApp" class="whatsapp-bubble-icon" />
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="inicio">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-left">
+          <p class="hero-kicker">Escápate a la naturaleza</p>
+          <h2 class="hero-title">
+            Vive un <span class="highlight">día de campo perfecto</span> cerca de la ciudad
+          </h2>
+          <p class="hero-subtitle">
+            Alquila nuestra casa de campo con piscina, pequeña granja y 5 habitaciones familiares.
+            Ideal para pasar un full day, celebrar eventos especiales o quedarte a dormir con tu familia y amigos.
+          </p>
+          <p class="hero-extra">
+            Disfruta de áreas verdes amplias, zona de parrilla, cocina equipada y espacios pensados para desconectarte de la rutina sin preocuparte por nada.
+          </p>
+
+          <div class="hero-tags">
+            <span class="tag">Piscina privada</span>
+            <span class="tag">Pequeña granja</span>
+            <span class="tag">5 habitaciones familiares</span>
+            <span class="tag">Eventos y reuniones</span>
+            <span class="tag">Estacionamiento amplio</span>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#tarifas" class="btn btn-primary">
+              Ver tarifas y paquetes
+            </a>
+            <a href="#reserva" class="btn btn-outline">
+              Ver calendario de fechas
+            </a>
+          </div>
+
+          <p class="hero-note">
+            Reservas para full day y eventos. Pregunta por promociones de temporada.
+          </p>
+        </div>
+
+        <!-- CARD RESERVA -->
+        <aside class="hero-right" id="reserva">
+          <div class="booking-card">
+            <div class="booking-title">Reserva tu fecha</div>
+            <div class="booking-subtitle">
+              Elige el día y el tipo de reserva. Te contactaremos por WhatsApp para confirmar disponibilidad.
+            </div>
+
+            <div class="booking-row">
+              <div class="booking-block">
+                <label>Fecha</label>
+                <div class="calendar" id="calendar">
+                  <div class="calendar-header">
+                    <button type="button" class="calendar-nav-btn" id="calPrev">‹</button>
+                    <div class="calendar-month-label" id="calMonthLabel"></div>
+                    <button type="button" class="calendar-nav-btn" id="calNext">›</button>
+                  </div>
+                  <div class="calendar-weekdays">
+                    <span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span>
+                  </div>
+                  <div class="calendar-days" id="calDays"></div>
+                </div>
+                <input type="hidden" id="bookingDate" />
+              </div>
+              <div class="booking-block">
+                <label for="bookingType">Tipo de reserva</label>
+                <select id="bookingType" class="booking-select">
+                  <option value="">Selecciona una opción</option>
+                  <option value="Full day">Full day</option>
+                  <option value="Alquiler para eventos">Alquiler para eventos</option>
+                  <option value="Full day + alojamiento">Full day + alojamiento</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="booking-form-row">
+              <div class="booking-block">
+                <label for="bookingName">Nombre y apellidos</label>
+                <input id="bookingName" type="text" class="booking-input" placeholder="Tu nombre completo" />
+              </div>
+              <div class="booking-block">
+                <label for="bookingPhone">WhatsApp</label>
+                <input id="bookingPhone" type="tel" class="booking-input" placeholder="+51 999 999 999" />
+              </div>
+            </div>
+
+            <div class="booking-form-row">
+              <div class="booking-block">
+                <label for="bookingPeople">Nº de personas</label>
+                <input id="bookingPeople" type="number" min="1" class="booking-input" placeholder="Ej. 15" />
+              </div>
+              <div class="booking-block">
+                <label for="bookingNotes">Comentario</label>
+                <input id="bookingNotes" type="text" class="booking-input" placeholder="Cumpleaños, familia, empresa, etc." />
+              </div>
+            </div>
+
+            <p class="booking-note">
+              Horario de ingreso y salida se coordina por WhatsApp según el tipo de reserva.
+            </p>
+
+            <div class="booking-cta">
+              <button type="button" class="btn btn-whatsapp" id="btnReserve">
+                Reservar por WhatsApp
+              </button>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <!-- LA CASA -->
+      <section id="casa">
+        <div class="section-header">
+          <p class="section-kicker">La casa</p>
+          <h2 class="section-title">Una casa de campo diseñada para compartir</h2>
+          <p class="section-subtitle">
+            Nuestra casa de campo cuenta con ambientes cómodos y funcionales, pensados para familias grandes, grupos de amigos o eventos privados.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card">
+            <span class="card-tag">Distribución</span>
+            <h3 class="card-title">Espacios amplios y cómodos</h3>
+            <p>
+              • 5 habitaciones familiares (hasta X personas según configuración).<br />
+              • Sala comedor amplia con vista al jardín.<br />
+              • Cocina equipada (refrigeradora, cocina, menaje básico).<br />
+              • 3 baños completos + 1 baño de visitas.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-tag">Exteriores</span>
+            <h3 class="card-title">Áreas verdes y zona social</h3>
+            <p>
+              • Piscina privada para adultos y niños.<br />
+              • Terraza techada y zona de parrilla.<br />
+              • Juegos para niños y espacios para hamacas.<br />
+              • Estacionamiento interno para varios vehículos.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SERVICIOS / AMBIENTES -->
+      <section id="servicios">
+        <div class="section-header">
+          <p class="section-kicker">Ambientes y servicios</p>
+          <h2 class="section-title">Todo lo que incluye tu experiencia de campo</h2>
+          <p class="section-subtitle">
+            La casa está equipada para que solo te preocupes por disfrutar. Estos son algunos de los servicios incluidos en tu reserva.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <h3 class="card-title">Piscina privada</h3>
+            <p>
+              Piscina para adultos y área baja para niños. Mantenimiento constante y tumbonas alrededor para relajarse.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Pequeña granja</h3>
+            <p>
+              Zona con animalitos de granja para que los niños puedan observar y conectar con la naturaleza (según disponibilidad).
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">5 habitaciones familiares</h3>
+            <p>
+              Habitaciones cómodas con camas dobles y camarotes, ideales para grupos. Incluye ropa de cama básica.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Zona de parrilla y cocina</h3>
+            <p>
+              Parrilla de carbón, mesa de trabajo y cocina equipada para que puedas preparar tus alimentos con tranquilidad.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Estacionamiento y seguridad</h3>
+            <p>
+              Estacionamiento dentro del recinto y portón de ingreso. Casa cerrada y segura para que disfrutes sin preocupaciones.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Apoyo en eventos</h3>
+            <p>
+              Asesoría básica para organización de cumpleaños, reuniones familiares o eventos corporativos pequeños.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- GALERÍA -->
+      <section id="galeria">
+        <div class="section-header">
+          <p class="section-kicker">Galería</p>
+          <h2 class="section-title">Imagina tu día aquí</h2>
+          <p class="section-subtitle">
+            Reemplaza estas imágenes por fotos reales de tu casa de campo: piscina, habitaciones, áreas verdes y espacios de eventos.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <img src="img/galeria-piscina.jpg" alt="Piscina de la casa de campo" />
+            <figcaption class="gallery-label">Piscina</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/galeria-jardin.jpg" alt="Jardines y áreas verdes" />
+            <figcaption class="gallery-label">Jardín y áreas verdes</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/galeria-habitaciones.jpg" alt="Habitaciones familiares" />
+            <figcaption class="gallery-label">Habitaciones</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/galeria-eventos.jpg" alt="Eventos y celebraciones" />
+            <figcaption class="gallery-label">Eventos</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/galeria-granja.jpg" alt="Pequeña granja" />
+            <figcaption class="gallery-label">Granja</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="img/galeria-parrilla.jpg" alt="Zona de parrilla" />
+            <figcaption class="gallery-label">Zona de parrilla</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- TARIFAS / PLANES -->
+      <section id="tarifas">
+        <div class="section-header">
+          <p class="section-kicker">Tarifas</p>
+          <h2 class="section-title">Paquetes pensados para cada tipo de salida</h2>
+          <p class="section-subtitle">
+            Los precios pueden variar según fecha, temporada y número de personas. Usa el calendario para reservar y te confirmaremos la tarifa exacta por WhatsApp.
+          </p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <span class="card-tag">Día completo</span>
+            <h3 class="card-title">Full day</h3>
+            <p class="plan-price">S/ XXX <span>(referencial)</span></p>
+            <ul class="plan-list">
+              <li>Uso de la casa y áreas verdes de 9:00 a.m. a 6:00 p.m.</li>
+              <li>Acceso a piscina, jardines, zona de parrilla y cocina.</li>
+              <li>Estacionamiento interno.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="card-tag">Celebraciones</span>
+            <h3 class="card-title">Alquiler para eventos</h3>
+            <p class="plan-price">S/ XXX <span>(según tipo de evento)</span></p>
+            <ul class="plan-list">
+              <li>Cumpleaños, reuniones familiares o corporativas pequeñas.</li>
+              <li>Espacios para toldos, mesas y decoración.</li>
+              <li>Coordinación de horarios de montaje y desmontaje.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <span class="card-tag">Fin de semana</span>
+            <h3 class="card-title">Full day + alojamiento</h3>
+            <p class="plan-price">S/ XXX <span>(desde)</span></p>
+            <ul class="plan-list">
+              <li>Full day + pernocte en las 5 habitaciones familiares.</li>
+              <li>Uso de áreas comunes hasta el día siguiente.</li>
+              <li>Ideal para familias grandes o grupos de amigos.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- UBICACIÓN -->
+      <section id="ubicacion">
+        <div class="section-header">
+          <p class="section-kicker">Ubicación</p>
+          <h2 class="section-title">A un paso de la ciudad, en medio de la naturaleza</h2>
+          <p class="section-subtitle">
+            Describe aquí la ruta y las referencias para llegar a la casa de campo. Puedes insertar un mapa de Google Maps en lugar del recuadro.
+          </p>
+        </div>
+
+        <div class="location-card">
+          <p>
+            • A XX minutos de <strong>Ciudad principal</strong>.<br />
+            • Acceso por carretera asfaltada la mayor parte del camino.<br />
+            • Ideal para llegar en auto particular o movilidad privada.
+          </p>
+
+          <div class="map-placeholder">
+            Aquí puedes incrustar un mapa de Google Maps con la ubicación exacta de la casa de campo.
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTO -->
+      <section id="contacto">
+        <div class="section-header">
+          <p class="section-kicker">Contacto</p>
+          <h2 class="section-title">¿Listo para reservar?</h2>
+          <p class="section-subtitle">
+            Escríbenos por WhatsApp para confirmar disponibilidad, armar tu paquete y resolver cualquier duda.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-row">
+            <div>
+              <div class="contact-label">WhatsApp</div>
+              <a
+                href="https://wa.me/51999999999"
+                target="_blank"
+                style="color:#166534; font-weight: 600; display:block;"
+              >Escríbenos por WhatsApp</a>
+              <a
+                href="https://wa.me/51999999999"
+                target="_blank"
+                class="whatsapp-number"
+              >
+                <span>📞 +51 999 999 999</span>
+              </a>
+            </div>
+          </div>
+
+          <p style="font-size:0.8rem; color:var(--muted); margin-top:8px;">
+            Indícanos la fecha tentativa, el tipo de reserva (full day, evento o full day + alojamiento)
+            y el número de personas para cotizarte de la mejor manera.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>
+        © <span id="year"></span> Casa de Campo El Encanto. Todos los derechos reservados.
+      </span>
+      <span style="font-size: 0.78rem;">Landing desarrollada como ejemplo. Personaliza textos, fotos y precios según tu casa de campo.</span>
+    </footer>
+  </div>
+
+  <!-- Botón flotante WhatsApp (móvil / general) -->
+  <a
+    href="https://wa.me/51999999999"
+    target="_blank"
+    class="floating-whatsapp"
+  >
+    <span class="floating-whatsapp-icon">💬</span>
+    <span>Hablar por WhatsApp</span>
+  </a>
+
+  <script>
+    // Año en footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll suave para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const targetId = a.getAttribute("href").substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          e.preventDefault();
+          const offset = 20;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: "smooth" });
+        }
+      });
+    });
+
+    // CALENDARIO (basado en Analytix, adaptado a tipos de reserva)
+    (function() {
+      const monthLabel = document.getElementById("calMonthLabel");
+      const daysContainer = document.getElementById("calDays");
+      const btnPrev = document.getElementById("calPrev");
+      const btnNext = document.getElementById("calNext");
+      const hiddenDate = document.getElementById("bookingDate");
+
+      if (!monthLabel || !daysContainer || !btnPrev || !btnNext || !hiddenDate) return;
+
+      const today = new Date();
+      let currentYear = today.getFullYear();
+      let currentMonth = today.getMonth();
+      let selectedDateStr = "";
+
+      function formatYMD(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+      }
+
+      function renderCalendar() {
+        const monthNames = [
+          "enero","febrero","marzo","abril","mayo","junio",
+          "julio","agosto","setiembre","octubre","noviembre","diciembre"
+        ];
+
+        const firstDay = new Date(currentYear, currentMonth, 1);
+        const lastDay = new Date(currentYear, currentMonth + 1, 0);
+        const daysInMonth = lastDay.getDate();
+
+        const firstWeekday = firstDay.getDay(); // 0=Domingo, 1=Lunes...
+        const offset = (firstWeekday + 6) % 7; // lunes como inicio
+
+        monthLabel.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+        daysContainer.innerHTML = "";
+
+        // celdas vacías antes del 1
+        for (let i = 0; i < offset; i++) {
+          const emptyCell = document.createElement("div");
+          daysContainer.appendChild(emptyCell);
+        }
+
+        const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          const dateObj = new Date(currentYear, currentMonth, day);
+          const cell = document.createElement("button");
+          cell.type = "button";
+          cell.textContent = day;
+          cell.className = "calendar-day";
+
+          const dateStr = formatYMD(dateObj);
+          const isToday = formatYMD(today) === dateStr;
+          if (isToday) cell.classList.add("is-today");
+
+          if (dateObj < todayMidnight) {
+            cell.classList.add("disabled");
+          }
+
+          cell.addEventListener("click", () => {
+            if (cell.classList.contains("disabled")) return;
+            selectedDateStr = dateStr;
+            hiddenDate.value = dateStr;
+            daysContainer.querySelectorAll(".calendar-day").forEach(d => d.classList.remove("selected"));
+            cell.classList.add("selected");
+          });
+
+          daysContainer.appendChild(cell);
+        }
+
+        // mantener selección si está en el mismo mes
+        const sd = new Date(selectedDateStr + "T00:00:00");
+        if (!isNaN(sd) && sd.getMonth() === currentMonth && sd.getFullYear() === currentYear) {
+          const dayNumber = sd.getDate();
+          const indexInGrid = offset + dayNumber - 1;
+          const dayEl = daysContainer.children[indexInGrid];
+          if (dayEl && dayEl.classList.contains("calendar-day")) {
+            dayEl.classList.add("selected");
+          }
+        }
+      }
+
+      btnPrev.addEventListener("click", () => {
+        // no permitir ir a meses anteriores al actual
+        const min = new Date(today.getFullYear(), today.getMonth(), 1);
+        const current = new Date(currentYear, currentMonth, 1);
+        if (current <= min) return;
+        currentMonth--;
+        if (currentMonth < 0) {
+          currentMonth = 11;
+          currentYear--;
+        }
+        renderCalendar();
+      });
+
+      btnNext.addEventListener("click", () => {
+        currentMonth++;
+        if (currentMonth > 11) {
+          currentMonth = 0;
+          currentYear++;
+        }
+        renderCalendar();
+      });
+
+      // Seleccionar hoy por defecto
+      selectedDateStr = formatYMD(today);
+      hiddenDate.value = selectedDateStr;
+      renderCalendar();
+    })();
+
+    // BOTÓN RESERVAR -> WhatsApp
+    (function() {
+      const btn = document.getElementById("btnReserve");
+      if (!btn) return;
+
+      btn.addEventListener("click", () => {
+        const dateStr = document.getElementById("bookingDate").value;
+        const type = document.getElementById("bookingType").value;
+        const name = document.getElementById("bookingName").value.trim();
+        const phone = document.getElementById("bookingPhone").value.trim();
+        const people = document.getElementById("bookingPeople").value.trim();
+        const notes = document.getElementById("bookingNotes").value.trim();
+
+        if (!dateStr || !type || !name || !phone || !people) {
+          alert("Por favor completa la fecha, el tipo de reserva, tu nombre, WhatsApp y número de personas.");
+          return;
+        }
+
+        const dateObj = new Date(dateStr + "T00:00:00");
+        const formatted = dateObj.toLocaleDateString("es-PE", {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        });
+
+        const msg =
+          `Hola, quiero reservar la casa de campo.%0A%0A` +
+          `Nombre: ${name}%0A` +
+          `WhatsApp: ${phone}%0A` +
+          `Fecha solicitada: ${formatted}%0A` +
+          `Tipo de reserva: ${type}%0A` +
+          `Nº de personas: ${people}%0A` +
+          (notes ? `%0AComentario: ${notes}%0A` : "%0A") +
+          `%0A¿Está disponible esta fecha?`;
+
+        // Reemplaza 51999999999 por tu número real
+        const waUrl = `https://wa.me/51999999999?text=${msg}`;
+        window.open(waUrl, "_blank");
+      });
+    })();
+  </script>
+</body>
+</html>
