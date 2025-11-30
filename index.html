@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Casa de Campo El Encanto | Alquiler y Eventos</title>
+  <title>La Venturosa | Casa de Campo en Pachacámac</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Alquila una hermosa casa de campo con piscina, pequeña granja y 5 habitaciones familiares. Full day, eventos y alojamiento." />
+  <meta name="description" content="La Venturosa, una hermosa casa de campo en Pachacámac con piscina, pequeña granja y 5 habitaciones familiares. Full day, eventos y alojamiento." />
 
   <!-- Fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,13 +13,13 @@
 
   <style>
     :root {
-      --bg-main: #022c22;          /* verde oscuro */
-      --bg-alt: #064e3b;           /* verde medio */
-      --bg-soft: #e8f5e9;          /* verde muy claro */
-      --primary: #fbbf24;          /* dorado */
+      --bg-main: #022c22;
+      --bg-alt: #064e3b;
+      --bg-soft: #e8f5e9;
+      --primary: #fbbf24;
       --primary-dark: #d97706;
       --primary-soft: #fef3c7;
-      --accent: #10b981;           /* verde acento */
+      --accent: #10b981;
       --text-main: #0f172a;
       --text-light: #f9fafb;
       --muted: #6b7280;
@@ -357,9 +357,6 @@
     }
 
     .booking-row {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 0.8rem;
       margin-bottom: 0.8rem;
     }
 
@@ -371,7 +368,8 @@
     }
 
     .booking-select,
-    .booking-input {
+    .booking-input,
+    .booking-textarea {
       width: 100%;
       border-radius: 0.8rem;
       border: 1px solid rgba(55, 65, 81, 0.35);
@@ -385,10 +383,16 @@
     }
 
     .booking-select:focus,
-    .booking-input:focus {
+    .booking-input:focus,
+    .booking-textarea:focus {
       border-color: #16a34a;
       box-shadow: 0 0 0 1px rgba(22, 163, 74, 0.35);
       background: #f0fdf4;
+    }
+
+    .booking-textarea {
+      min-height: 70px;
+      resize: vertical;
     }
 
     .booking-form-row {
@@ -431,7 +435,7 @@
       border-radius: 1rem;
       background: #ffffff;
       border: 1px solid rgba(148, 163, 184, 0.5);
-      padding: 0.6rem 0.7rem 0.7rem;
+      padding: 0.8rem 0.9rem 0.9rem;
       font-size: 0.78rem;
     }
 
@@ -439,7 +443,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
     .calendar-month-label {
@@ -484,12 +488,12 @@
     .calendar-days {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 0.15rem;
+      gap: 0.18rem;
     }
 
     .calendar-day {
       border-radius: 0.6rem;
-      padding: 0.35rem 0;
+      padding: 0.4rem 0;
       text-align: center;
       border: 1px solid transparent;
       cursor: pointer;
@@ -706,9 +710,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      font-size: 0.86rem;
-      text-align: center;
+      padding: 0;
+    }
+
+    .map-placeholder iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
     }
 
     /* CONTACTO */
@@ -749,6 +757,45 @@
       text-decoration: none;
     }
 
+    .contact-email {
+      font-size: 0.86rem;
+      color: #1f2937;
+      margin-top: 6px;
+      display: inline-block;
+      word-break: break-all;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      color: #111827;
+      text-decoration: none;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .social-link span.icon {
+      font-size: 1rem;
+    }
+
+    .social-link:hover {
+      background: #e5e7eb;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.15);
+    }
+
     /* FOOTER */
 
     footer {
@@ -763,7 +810,7 @@
       flex-wrap: wrap;
     }
 
-    /* FLOTANTE WHATSAPP (MÓVIL/GENERAL) */
+    /* FLOTANTE WHATSAPP */
 
     .floating-whatsapp {
       position: fixed;
@@ -876,29 +923,26 @@
     <header>
       <div class="header-inner">
         <div class="header-logo">
-          <!-- Reemplaza la ruta del src por la de tu logo -->
-          <img src="img/logo-casa-de-campo.png" alt="Logo Casa de Campo" />
+          <img src="img/logo-laventurosa.png" alt="La Venturosa" />
           <div class="header-title">
-            <h1>Casa de Campo El Encanto</h1>
-            <span>Full day · Eventos · Alojamiento familiar</span>
+            <h1>La Venturosa</h1>
+            <span>Casa de campo en Pachacámac</span>
           </div>
         </div>
 
         <nav>
-          <a href="#inicio" class="nav-link">Inicio</a>
-          <a href="#casa" class="nav-link">La casa</a>
-          <a href="#servicios" class="nav-link">Ambientes</a>
           <a href="#galeria" class="nav-link">Galería</a>
           <a href="#tarifas" class="nav-link">Tarifas</a>
           <a href="#ubicacion" class="nav-link">Ubicación</a>
-          <a href="#contacto" class="nav-link primary">Reservar ahora</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+          <a href="#contacto" class="nav-link primary">Reservar</a>
           <a
-            href="https://wa.me/51999999999"
+            href="https://wa.me/51989026355"
             class="whatsapp-bubble"
             target="_blank"
             aria-label="Escríbenos por WhatsApp"
           >
-            <img src="img/whatsapp.png" alt="WhatsApp" class="whatsapp-bubble-icon" />
+            <img src="img/icon-whatsapp.png" alt="WhatsApp" class="whatsapp-bubble-icon" />
           </a>
         </nav>
       </div>
@@ -910,10 +954,10 @@
         <div class="hero-left">
           <p class="hero-kicker">Escápate a la naturaleza</p>
           <h2 class="hero-title">
-            Vive un <span class="highlight">día de campo perfecto</span> cerca de la ciudad
+            Vive un <span class="highlight">día de campo perfecto</span> en La Venturosa
           </h2>
           <p class="hero-subtitle">
-            Alquila nuestra casa de campo con piscina, pequeña granja y 5 habitaciones familiares.
+            La Venturosa es una casa de campo en Pachacámac con piscina, pequeña granja y 5 habitaciones familiares.
             Ideal para pasar un full day, celebrar eventos especiales o quedarte a dormir con tu familia y amigos.
           </p>
           <p class="hero-extra">
@@ -947,9 +991,10 @@
           <div class="booking-card">
             <div class="booking-title">Reserva tu fecha</div>
             <div class="booking-subtitle">
-              Elige el día y el tipo de reserva. Te contactaremos por WhatsApp para confirmar disponibilidad.
+              Elige el día, cuéntanos qué tipo de reserva deseas y te confirmaremos la disponibilidad por WhatsApp.
             </div>
 
+            <!-- Calendario ocupa todo el ancho -->
             <div class="booking-row">
               <div class="booking-block">
                 <label>Fecha</label>
@@ -966,6 +1011,26 @@
                 </div>
                 <input type="hidden" id="bookingDate" />
               </div>
+            </div>
+
+            <!-- Nombre y WhatsApp -->
+            <div class="booking-form-row">
+              <div class="booking-block">
+                <label for="bookingName">Nombre y apellidos</label>
+                <input id="bookingName" type="text" class="booking-input" placeholder="Tu nombre completo" />
+              </div>
+              <div class="booking-block">
+                <label for="bookingPhone">WhatsApp</label>
+                <input id="bookingPhone" type="tel" class="booking-input" placeholder="+51 989 026 355" />
+              </div>
+            </div>
+
+            <!-- Personas y Tipo de reserva juntos -->
+            <div class="booking-form-row">
+              <div class="booking-block">
+                <label for="bookingPeople">Nº de personas</label>
+                <input id="bookingPeople" type="number" min="1" class="booking-input" placeholder="Ej. 15" />
+              </div>
               <div class="booking-block">
                 <label for="bookingType">Tipo de reserva</label>
                 <select id="bookingType" class="booking-select">
@@ -977,30 +1042,16 @@
               </div>
             </div>
 
-            <div class="booking-form-row">
+            <!-- Comentarios más amplios -->
+            <div style="margin-bottom: 0.8rem;">
               <div class="booking-block">
-                <label for="bookingName">Nombre y apellidos</label>
-                <input id="bookingName" type="text" class="booking-input" placeholder="Tu nombre completo" />
-              </div>
-              <div class="booking-block">
-                <label for="bookingPhone">WhatsApp</label>
-                <input id="bookingPhone" type="tel" class="booking-input" placeholder="+51 999 999 999" />
-              </div>
-            </div>
-
-            <div class="booking-form-row">
-              <div class="booking-block">
-                <label for="bookingPeople">Nº de personas</label>
-                <input id="bookingPeople" type="number" min="1" class="booking-input" placeholder="Ej. 15" />
-              </div>
-              <div class="booking-block">
-                <label for="bookingNotes">Comentario</label>
-                <input id="bookingNotes" type="text" class="booking-input" placeholder="Cumpleaños, familia, empresa, etc." />
+                <label for="bookingNotes">Cuéntanos tus requerimientos</label>
+                <textarea id="bookingNotes" class="booking-textarea" placeholder="Ej.: cumpleaños infantil, evento corporativo, familia de 4 adultos y 3 niños, horario aproximado de ingreso, etc."></textarea>
               </div>
             </div>
 
             <p class="booking-note">
-              Horario de ingreso y salida se coordina por WhatsApp según el tipo de reserva.
+              El horario de ingreso y salida se coordina por WhatsApp según el tipo de reserva.
             </p>
 
             <div class="booking-cta">
@@ -1016,9 +1067,9 @@
       <section id="casa">
         <div class="section-header">
           <p class="section-kicker">La casa</p>
-          <h2 class="section-title">Una casa de campo diseñada para compartir</h2>
+          <h2 class="section-title">Un espacio diseñado para compartir momentos</h2>
           <p class="section-subtitle">
-            Nuestra casa de campo cuenta con ambientes cómodos y funcionales, pensados para familias grandes, grupos de amigos o eventos privados.
+            La Venturosa cuenta con ambientes cómodos y funcionales, pensados para familias grandes, grupos de amigos o eventos privados.
           </p>
         </div>
 
@@ -1027,7 +1078,7 @@
             <span class="card-tag">Distribución</span>
             <h3 class="card-title">Espacios amplios y cómodos</h3>
             <p>
-              • 5 habitaciones familiares (hasta X personas según configuración).<br />
+              • 5 habitaciones familiares (capacidad según configuración).<br />
               • Sala comedor amplia con vista al jardín.<br />
               • Cocina equipada (refrigeradora, cocina, menaje básico).<br />
               • 3 baños completos + 1 baño de visitas.
@@ -1051,7 +1102,7 @@
       <section id="servicios">
         <div class="section-header">
           <p class="section-kicker">Ambientes y servicios</p>
-          <h2 class="section-title">Todo lo que incluye tu experiencia de campo</h2>
+          <h2 class="section-title">Todo lo que necesitas para disfrutar La Venturosa</h2>
           <p class="section-subtitle">
             La casa está equipada para que solo te preocupes por disfrutar. Estos son algunos de los servicios incluidos en tu reserva.
           </p>
@@ -1106,35 +1157,35 @@
       <section id="galeria">
         <div class="section-header">
           <p class="section-kicker">Galería</p>
-          <h2 class="section-title">Imagina tu día aquí</h2>
+          <h2 class="section-title">Conoce los espacios de La Venturosa</h2>
           <p class="section-subtitle">
-            Reemplaza estas imágenes por fotos reales de tu casa de campo: piscina, habitaciones, áreas verdes y espacios de eventos.
+            Un vistazo a la piscina, las áreas verdes, las habitaciones y los ambientes pensados para tus eventos y reuniones.
           </p>
         </div>
 
         <div class="gallery-grid">
           <figure class="gallery-item">
-            <img src="img/galeria-piscina.jpg" alt="Piscina de la casa de campo" />
+            <img src="img/galeria-piscina.jpg" alt="Piscina de La Venturosa" />
             <figcaption class="gallery-label">Piscina</figcaption>
           </figure>
           <figure class="gallery-item">
-            <img src="img/galeria-jardin.jpg" alt="Jardines y áreas verdes" />
+            <img src="img/galeria-jardin.jpg" alt="Jardines y áreas verdes de La Venturosa" />
             <figcaption class="gallery-label">Jardín y áreas verdes</figcaption>
           </figure>
           <figure class="gallery-item">
-            <img src="img/galeria-habitaciones.jpg" alt="Habitaciones familiares" />
+            <img src="img/galeria-habitaciones.jpg" alt="Habitaciones familiares de La Venturosa" />
             <figcaption class="gallery-label">Habitaciones</figcaption>
           </figure>
           <figure class="gallery-item">
-            <img src="img/galeria-eventos.jpg" alt="Eventos y celebraciones" />
+            <img src="img/galeria-eventos.jpg" alt="Eventos y celebraciones en La Venturosa" />
             <figcaption class="gallery-label">Eventos</figcaption>
           </figure>
           <figure class="gallery-item">
-            <img src="img/galeria-granja.jpg" alt="Pequeña granja" />
+            <img src="img/galeria-granja.jpg" alt="Pequeña granja de La Venturosa" />
             <figcaption class="gallery-label">Granja</figcaption>
           </figure>
           <figure class="gallery-item">
-            <img src="img/galeria-parrilla.jpg" alt="Zona de parrilla" />
+            <img src="img/galeria-parrilla.jpg" alt="Zona de parrilla en La Venturosa" />
             <figcaption class="gallery-label">Zona de parrilla</figcaption>
           </figure>
         </div>
@@ -1190,21 +1241,26 @@
       <section id="ubicacion">
         <div class="section-header">
           <p class="section-kicker">Ubicación</p>
-          <h2 class="section-title">A un paso de la ciudad, en medio de la naturaleza</h2>
+          <h2 class="section-title">La Venturosa en Pachacámac</h2>
           <p class="section-subtitle">
-            Describe aquí la ruta y las referencias para llegar a la casa de campo. Puedes insertar un mapa de Google Maps en lugar del recuadro.
+            Disfruta del campo muy cerca de la ciudad. La Venturosa está ubicada en Pachacámac, con fácil acceso en auto particular o movilidad privada.
           </p>
         </div>
 
         <div class="location-card">
           <p>
-            • A XX minutos de <strong>Ciudad principal</strong>.<br />
+            • A pocos minutos de Lima, en la zona de Pachacámac.<br />
             • Acceso por carretera asfaltada la mayor parte del camino.<br />
-            • Ideal para llegar en auto particular o movilidad privada.
+            • Ideal para escapadas de fin de semana, full days y eventos.
           </p>
 
           <div class="map-placeholder">
-            Aquí puedes incrustar un mapa de Google Maps con la ubicación exacta de la casa de campo.
+            <!-- Si más adelante obtienes el embed oficial, puedes reemplazar este iframe -->
+            <iframe
+              src="https://maps.app.goo.gl/XFoxzt5EiAXrwF7T8"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -1213,9 +1269,9 @@
       <section id="contacto">
         <div class="section-header">
           <p class="section-kicker">Contacto</p>
-          <h2 class="section-title">¿Listo para reservar?</h2>
+          <h2 class="section-title">¿Listo para reservar en La Venturosa?</h2>
           <p class="section-subtitle">
-            Escríbenos por WhatsApp para confirmar disponibilidad, armar tu paquete y resolver cualquier duda.
+            Escríbenos por WhatsApp o correo para confirmar disponibilidad, armar tu paquete y resolver cualquier duda.
           </p>
         </div>
 
@@ -1224,21 +1280,60 @@
             <div>
               <div class="contact-label">WhatsApp</div>
               <a
-                href="https://wa.me/51999999999"
+                href="https://wa.me/51989026355"
                 target="_blank"
                 style="color:#166534; font-weight: 600; display:block;"
-              >Escríbenos por WhatsApp</a>
+              >
+                Escríbenos por WhatsApp
+              </a>
               <a
-                href="https://wa.me/51999999999"
+                href="https://wa.me/51989026355"
                 target="_blank"
                 class="whatsapp-number"
               >
-                <span>📞 +51 999 999 999</span>
+                <span>📞 +51 989 026 355</span>
               </a>
             </div>
           </div>
 
-          <p style="font-size:0.8rem; color:var(--muted); margin-top:8px;">
+          <div style="margin-top: 8px;">
+            <div class="contact-label">Correo electrónico</div>
+            <a href="mailto:laventurosa.pachacamac@gmail.com" class="contact-email">
+              laventurosa.pachacamac@gmail.com
+            </a>
+          </div>
+
+          <div style="margin-top: 14px;">
+            <div class="contact-label">Redes sociales</div>
+            <div class="social-links">
+              <a
+                href="https://www.facebook.com/laventurosapachacamac"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="icon">📘</span>
+                <span>Facebook</span>
+              </a>
+              <a
+                href="https://www.instagram.com/laventurosapachacamac"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="icon">📸</span>
+                <span>Instagram</span>
+              </a>
+              <a
+                href="https://www.tiktok.com/laventurosapachacamac"
+                target="_blank"
+                class="social-link"
+              >
+                <span class="icon">🎵</span>
+                <span>TikTok</span>
+              </a>
+            </div>
+          </div>
+
+          <p style="font-size:0.8rem; color:var(--muted); margin-top:10px;">
             Indícanos la fecha tentativa, el tipo de reserva (full day, evento o full day + alojamiento)
             y el número de personas para cotizarte de la mejor manera.
           </p>
@@ -1248,15 +1343,15 @@
 
     <footer>
       <span>
-        © <span id="year"></span> Casa de Campo El Encanto. Todos los derechos reservados.
+        © <span id="year"></span> La Venturosa. Todos los derechos reservados.
       </span>
-      <span style="font-size: 0.78rem;">Landing desarrollada como ejemplo. Personaliza textos, fotos y precios según tu casa de campo.</span>
+      <span style="font-size: 0.78rem;">Casa de campo para full day, eventos y alojamiento en Pachacámac.</span>
     </footer>
   </div>
 
   <!-- Botón flotante WhatsApp (móvil / general) -->
   <a
-    href="https://wa.me/51999999999"
+    href="https://wa.me/51989026355"
     target="_blank"
     class="floating-whatsapp"
   >
@@ -1282,7 +1377,7 @@
       });
     });
 
-    // CALENDARIO (basado en Analytix, adaptado a tipos de reserva)
+    // CALENDARIO
     (function() {
       const monthLabel = document.getElementById("calMonthLabel");
       const daysContainer = document.getElementById("calDays");
@@ -1367,7 +1462,6 @@
       }
 
       btnPrev.addEventListener("click", () => {
-        // no permitir ir a meses anteriores al actual
         const min = new Date(today.getFullYear(), today.getMonth(), 1);
         const current = new Date(currentYear, currentMonth, 1);
         if (current <= min) return;
@@ -1421,17 +1515,16 @@
         });
 
         const msg =
-          `Hola, quiero reservar la casa de campo.%0A%0A` +
+          `Hola, quiero reservar en La Venturosa.%0A%0A` +
           `Nombre: ${name}%0A` +
           `WhatsApp: ${phone}%0A` +
           `Fecha solicitada: ${formatted}%0A` +
           `Tipo de reserva: ${type}%0A` +
           `Nº de personas: ${people}%0A` +
-          (notes ? `%0AComentario: ${notes}%0A` : "%0A") +
+          (notes ? `%0ADetalle / requerimientos: ${notes}%0A` : "%0A") +
           `%0A¿Está disponible esta fecha?`;
 
-        // Reemplaza 51999999999 por tu número real
-        const waUrl = `https://wa.me/51999999999?text=${msg}`;
+        const waUrl = `https://wa.me/51989026355?text=${msg}`;
         window.open(waUrl, "_blank");
       });
     })();
