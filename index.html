@@ -500,6 +500,7 @@
       font-size: 0.78rem;
       color: #111827;
       background: #f9fafb;
+      position: relative;
     }
 
     .calendar-day:hover {
@@ -511,16 +512,37 @@
       cursor: not-allowed;
     }
 
+    /* Verde para día seleccionado */
     .calendar-day.selected {
-      background: linear-gradient(135deg, #fbbf24, #f97316);
+      background: linear-gradient(135deg, #22c55e, #16a34a);
       border-color: transparent;
-      color: #022c22;
+      color: #ecfdf5;
       box-shadow: 0 0 0 1px rgba(250, 250, 249, 0.9);
       font-weight: 600;
     }
 
     .calendar-day.is-today {
       border-color: rgba(56, 189, 248, 0.8);
+    }
+
+    /* Fechas bloqueadas (no disponibles) */
+    .calendar-day.blocked {
+      background: #fee2e2;
+      color: #b91c1c;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+
+    .calendar-day.blocked::after {
+      content: "✕";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: #b91c1c;
+      pointer-events: none;
     }
 
     /* SECCIONES GENERALES */
@@ -994,7 +1016,7 @@
               Elige el día, cuéntanos qué tipo de reserva deseas y te confirmaremos la disponibilidad por WhatsApp.
             </div>
 
-            <!-- Calendario ocupa todo el ancho -->
+            <!-- Calendario -->
             <div class="booking-row">
               <div class="booking-block">
                 <label>Fecha</label>
@@ -1025,7 +1047,7 @@
               </div>
             </div>
 
-            <!-- Personas y Tipo de reserva juntos -->
+            <!-- Personas y Tipo de reserva -->
             <div class="booking-form-row">
               <div class="booking-block">
                 <label for="bookingPeople">Nº de personas</label>
@@ -1042,7 +1064,7 @@
               </div>
             </div>
 
-            <!-- Comentarios más amplios -->
+            <!-- Comentarios -->
             <div style="margin-bottom: 0.8rem;">
               <div class="booking-block">
                 <label for="bookingNotes">Cuéntanos tus requerimientos</label>
@@ -1255,7 +1277,7 @@
           </p>
 
           <div class="map-placeholder">
-            <!-- Si más adelante obtienes el embed oficial, puedes reemplazar este iframe -->
+            <!-- Puedes reemplazar el src por el embed oficial de Google Maps si lo deseas -->
             <iframe
               src="https://maps.app.goo.gl/XFoxzt5EiAXrwF7T8"
               loading="lazy"
@@ -1359,6 +1381,18 @@
     <span>Hablar por WhatsApp</span>
   </a>
 
+  <!-- Fechas no disponibles (formato YYYY-MM-DD) -->
+  <div id="fechas-no-disponibles" style="display:none;">
+    <!-- Ejemplos: reemplaza o agrega las fechas que desees bloquear -->
+    <!-- <span data-date="2024-12-24"></span>
+    <span data-date="2024-12-25"></span>
+    <span data-date="2024-12-05"></span>
+    <span data-date="2024-12-12"></span>
+    <span data-date="2024-12-19"></span>
+    <span data-date="2024-12-26"></span>
+    <span data-date="2024-12-31"></span> -->
+  </div>
+
   <script>
     // Año en footer
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -1386,6 +1420,17 @@
       const hiddenDate = document.getElementById("bookingDate");
 
       if (!monthLabel || !daysContainer || !btnPrev || !btnNext || !hiddenDate) return;
+
+      // Leer fechas bloqueadas desde el HTML
+      const blockedDatesEl = document.getElementById("fechas-no-disponibles");
+      const blockedDates = new Set();
+
+      if (blockedDatesEl) {
+        blockedDatesEl.querySelectorAll("[data-date]").forEach((el) => {
+          const val = el.getAttribute("data-date");
+          if (val) blockedDates.add(val.trim());
+        });
+      }
 
       const today = new Date();
       let currentYear = today.getFullYear();
@@ -1434,12 +1479,15 @@
           const isToday = formatYMD(today) === dateStr;
           if (isToday) cell.classList.add("is-today");
 
-          if (dateObj < todayMidnight) {
+          const isBlocked = blockedDates.has(dateStr);
+          if (isBlocked) {
+            cell.classList.add("blocked", "disabled");
+          } else if (dateObj < todayMidnight) {
             cell.classList.add("disabled");
           }
 
           cell.addEventListener("click", () => {
-            if (cell.classList.contains("disabled")) return;
+            if (cell.classList.contains("disabled") || cell.classList.contains("blocked")) return;
             selectedDateStr = dateStr;
             hiddenDate.value = dateStr;
             daysContainer.querySelectorAll(".calendar-day").forEach(d => d.classList.remove("selected"));
@@ -1455,7 +1503,7 @@
           const dayNumber = sd.getDate();
           const indexInGrid = offset + dayNumber - 1;
           const dayEl = daysContainer.children[indexInGrid];
-          if (dayEl && dayEl.classList.contains("calendar-day")) {
+          if (dayEl && dayEl.classList.contains("calendar-day") && !dayEl.classList.contains("blocked")) {
             dayEl.classList.add("selected");
           }
         }
@@ -1482,9 +1530,15 @@
         renderCalendar();
       });
 
-      // Seleccionar hoy por defecto
-      selectedDateStr = formatYMD(today);
-      hiddenDate.value = selectedDateStr;
+      // Seleccionar hoy por defecto solo si no está bloqueado
+      const todayStr = formatYMD(today);
+      if (!blockedDates.has(todayStr)) {
+        selectedDateStr = todayStr;
+        hiddenDate.value = todayStr;
+      } else {
+        selectedDateStr = "";
+        hiddenDate.value = "";
+      }
       renderCalendar();
     })();
 
